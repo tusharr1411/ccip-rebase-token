@@ -54,7 +54,7 @@ contract RebaseToken is ERC20, Ownable, AccessControl {
      * @param _newInterestRate new interest rate
      * @dev The interest rate can only decrease
      */
-    function setInterestRate(uint256 _newInterestRate) external {
+    function setInterestRate(uint256 _newInterestRate) external onlyOwner {
         require(
             _newInterestRate < s_globalInterestRate,
             RebaseToken__CanNotIncreaseInterestRate(s_globalInterestRate, _newInterestRate)

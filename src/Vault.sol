@@ -60,6 +60,8 @@ contract Vault {
         emit Redeemed(msg.sender, _amount);
     }
 
+    receive() external payable {}
+
     /////////////////////////////////////////////////////////////////
     //               getters and view functions                    //
     /////////////////////////////////////////////////////////////////

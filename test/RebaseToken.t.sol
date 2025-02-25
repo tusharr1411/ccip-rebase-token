@@ -74,7 +74,7 @@ contract RebaseTokenTest is Test {
         vm.startPrank(user);
         uint256 interestRate = rebaseToken.getGlobalInterestRate();
         vm.expectPartialRevert(bytes4(IAccessControl.AccessControlUnauthorizedAccount.selector));
-        rebaseToken.mint(user, _amount);
+        rebaseToken.mint(user, _amount, interestRate);
         vm.stopPrank();
     }
 

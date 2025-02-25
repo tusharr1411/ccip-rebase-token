@@ -1,6 +1,6 @@
 //SPDX-License-Identifier:MIT
 
-pragma solidity ^0.8.27;
+pragma solidity ^0.8.24;
 
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
@@ -68,11 +68,11 @@ contract RebaseToken is ERC20, Ownable, AccessControl {
      *
      * @param _to address to mint tokens
      * @param _amount amount of tokens to mint
-     *
+     * @param _userInterestRate interestRate of the user for minted tokens
      */
-    function mint(address _to, uint256 _amount) public onlyRole(MINT_AND_BURN_ROLE) {
+    function mint(address _to, uint256 _amount, uint256 _userInterestRate) public onlyRole(MINT_AND_BURN_ROLE) {
         _mintAccruedInterest(_to);
-        s_usersInterestRate[_to] = s_globalInterestRate;
+        s_usersInterestRate[_to] = _userInterestRate;
         _mint(_to, _amount);
     }
 

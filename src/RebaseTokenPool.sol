@@ -13,7 +13,10 @@ contract RebaseTokenPool is TokenPool {
     {}
 
     /// @notice burns the tokens on the source chain
-    function lockOrBurn(Pool.LockOrBurnInV1 calldata lockOrBurnIn) external returns (Pool.LockOrBurnOutV1 memory lockOrBurnOut){
+    function lockOrBurn(Pool.LockOrBurnInV1 calldata lockOrBurnIn)
+        external
+        returns (Pool.LockOrBurnOutV1 memory lockOrBurnOut)
+    {
         _validateLockOrBurn(lockOrBurnIn);
         // Burn the tokens on the source chain.
         // This returns their userAccumulatedInterest before the tokens were burned (in case all tokens were burned, we don't want to send 0 cross-chain)
@@ -29,7 +32,10 @@ contract RebaseTokenPool is TokenPool {
     }
 
     /// @notice Mints the tokens on the source chain
-    function releaseOrMint(Pool.ReleaseOrMintInV1 calldata releaseOrMintIn) external returns (Pool.ReleaseOrMintOutV1 memory){
+    function releaseOrMint(Pool.ReleaseOrMintInV1 calldata releaseOrMintIn)
+        external
+        returns (Pool.ReleaseOrMintOutV1 memory)
+    {
         _validateReleaseOrMint(releaseOrMintIn);
         (uint256 userInterestRate) = abi.decode(releaseOrMintIn.sourcePoolData, (uint256));
 

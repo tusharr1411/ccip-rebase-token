@@ -39,7 +39,7 @@ contract RebaseToken is ERC20, Ownable, AccessControl {
     /////////////////////////////////////////////////////////////////
 
     constructor() ERC20("Rebase Token", "RBT") Ownable(msg.sender) {
-        s_globalInterestRate = 5e10; // 0.05e8 percent
+        s_globalInterestRate = 5e10; // 5e10/1e18 = 0.000005 % per second
     }
 
     /////////////////////////////////////////////////////////////////
